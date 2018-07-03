@@ -50,4 +50,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor deps.arouter_compiler
     implementation project(':lib_common')
+    compile ('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
 }

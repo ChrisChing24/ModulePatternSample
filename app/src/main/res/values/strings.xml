@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MedicineMall</string>
+    <string name="navigation_home">首页</string>
+    <string name="navigation_sort">分类</string>
+    <string name="navigation_cart">购物车</string>
+    <string name="mine">我的</string>
 </resources>
