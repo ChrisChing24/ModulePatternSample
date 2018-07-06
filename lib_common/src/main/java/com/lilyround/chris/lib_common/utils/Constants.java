@@ -7,5 +7,6 @@ package com.lilyround.chris.lib_common.utils;
  */
 public class Constants {
 
-    public static final String BASE_URL = "https://mobi.fangkuaiyi.com/ApiControl";
+    public static final String BASE_URL = "https://mobi.fangkuaiyi.com/ApiControl/";
+    public static String version = "1.0.0";
 }

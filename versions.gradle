@@ -16,6 +16,7 @@ versions.rxjava2 = "2.1.7"
 versions.rx_android = "2.0.1"
 versions.rx_lifecycle = "0.6.1"
 versions.retrofit = "2.3.0"
+versions.retrofit_log = "3.9.0"
 versions.event_bus = "3.1.1"
 versions.photo_view = "2.0.0"
 versions.persistent_cookie = "v1.0.1"
@@ -32,6 +33,8 @@ versions.toasty = "1.1.3"
 versions.logger = "1.15"
 versions.material_dialog = "0.9.6.0"
 versions.leak_canary = "1.5.4"
+versions.view_model = "1.1.1"
+
 //Arouter
 versions.arouter_compiler = "1.1.4"
 versions.arouter_api = "1.3.1"
@@ -58,6 +61,7 @@ def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.log_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.retrofit_log"
 deps.retrofit = retrofit
 
 
@@ -96,14 +100,20 @@ deps.persistent_cookie = "com.github.franmontiel:PersistentCookieJar:$versions.p
 deps.gson = "com.google.code.gson:gson:$versions.gson"
 deps.permission = "com.yanzhenjie:permission:$versions.permission"
 deps.utils = "com.blankj:utilcode:$versions.utils"
-deps.top_snackbar ="com.androidadvance:topsnackbar:$versions.top_snackbar"
+deps.top_snackbar = "com.androidadvance:topsnackbar:$versions.top_snackbar"
 deps.litepal = "org.litepal.android:core:$versions.litepal"
-deps.toasty =  "com.github.GrenderG:Toasty:$versions.toasty"
+deps.toasty = "com.github.GrenderG:Toasty:$versions.toasty"
 deps.logger = "com.orhanobut:logger:$versions.logger"
+//ARouter
 deps.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
 deps.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+//leakCanary
 deps.leak_canary_debug = "com.squareup.leakcanary:leakcanary-android:$versions.leak_canary"
 deps.leak_canary = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leak_canary"
+//viewModel
+deps.view_model = "android.arch.lifecycle:extensions:$versions.view_model"
+deps.view_model_optional = "android.arch.lifecycle:reactivestreams:$versions.view_model"
+
 
 ext.deps = deps
 
@@ -120,7 +130,7 @@ def addRepos(RepositoryHandler handler) {
     handler.mavenCentral()
     //Add the JitPack repository
     handler.maven { url "https://jitpack.io" }
-    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 }
 
 ext.addRepos = this.&addRepos

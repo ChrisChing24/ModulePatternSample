@@ -9,6 +9,9 @@ import com.lilyround.chris.lib_common.R;
 import com.lilyround.chris.lib_common.utils.StatusBarUtil;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+
 
 /**
  * Created by chris on 2018/7/2 14:12
@@ -17,6 +20,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 public abstract class RxBaseActivity extends RxAppCompatActivity {
 
 
+    private CompositeDisposable mCompositeDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,9 @@ public abstract class RxBaseActivity extends RxAppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (this.mCompositeDisposable != null && mCompositeDisposable.isDisposed()) {
+            this.mCompositeDisposable.dispose();
+        }
         //设置leakCanary监测内存泄漏
         BaseApplication.getRefWatcher().watch(this);
     }
@@ -108,6 +115,13 @@ public abstract class RxBaseActivity extends RxAppCompatActivity {
         config.setToDefaults();
         res.updateConfiguration(config, res.getDisplayMetrics());
         return res;
+    }
+
+    public void addSubscription(Disposable disposable) {
+        if (this.mCompositeDisposable == null) {
+            this.mCompositeDisposable = new CompositeDisposable();
+        }
+        this.mCompositeDisposable.add(disposable);
     }
 
 }

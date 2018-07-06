@@ -50,7 +50,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor deps.arouter_compiler
     implementation project(':lib_common')
-    compile ('com.alibaba.android:vlayout:1.2.8@aar') {
+    //vLayout
+    implementation ('com.alibaba.android:vlayout:1.2.8@aar') {
         transitive = true
     }
+    //leakCanary添加依赖和其他的不同，不是implementation
+    debugImplementation deps.leak_canary_debug
+    releaseImplementation deps.leak_canary
+
 }

@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.lilyround.chris.lib_common.base.RxBaseActivity;
 import com.lilyround.chris.module_cart.CartFragment;
-import com.lilyround.chris.module_home.HomeFragment;
+import com.lilyround.chris.module_home.ui.HomeFragment;
 import com.lilyround.chris.module_mine.MineFragment;
 import com.lilyround.chris.module_sort.SortFragment;
 

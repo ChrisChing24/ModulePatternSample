@@ -50,6 +50,8 @@ dependencies {
     api deps.rx_lifecycle
     api deps.retrofit.runtime
     api deps.retrofit.gson
+    api deps.retrofit.adapter
+    api deps.retrofit.log_interceptor
     api deps.persistent_cookie
 
     //Dagger
@@ -64,6 +66,9 @@ dependencies {
     api deps.permission
     api deps.utils
     api deps.glide
+    //viewModel
+    api deps.view_model
+    api deps.view_model_optional
     //leakCanary添加依赖和其他的不同，不是implementation
     debugImplementation deps.leak_canary_debug
     releaseImplementation deps.leak_canary
@@ -81,4 +86,9 @@ dependencies {
     //annotationProcessor
     annotationProcessor deps.dagger.android_support_compiler
     annotationProcessor deps.dagger.compiler
+
+    //vLayout
+    implementation ('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
 }

@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import com.trello.rxlifecycle.components.support.RxFragment;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+
 
 /**
  * Created by chris on 2018/7/2 14:12
@@ -24,6 +27,8 @@ public abstract class RxLazyFragment extends RxFragment {
      */
     private boolean isLoadDataCompleted;
     private View mView;
+    //RxJava2 将CompositeSubscription改为CompositeDisposable
+    private CompositeDisposable mCompositeDisposable;
 
     @Nullable
     @Override
@@ -57,9 +62,19 @@ public abstract class RxLazyFragment extends RxFragment {
         }
     }
 
+    public void addSubscription(Disposable disposable) {
+        if (this.mCompositeDisposable == null) {
+            this.mCompositeDisposable = new CompositeDisposable();
+        }
+        this.mCompositeDisposable.add(disposable);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (this.mCompositeDisposable != null && mCompositeDisposable.isDisposed()) {
+            this.mCompositeDisposable.dispose();
+        }
         //设置leakCanary监测内存泄漏
         BaseApplication.getRefWatcher().watch(this);
     }

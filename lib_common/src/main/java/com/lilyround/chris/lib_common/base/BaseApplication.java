@@ -49,6 +49,7 @@ public class BaseApplication extends Application {
         mRefWatcher = LeakCanary.install(this);
         // Normal app init code...
 
+        Utils.init(this);
         if (Utils.isAppDebug()) {
             //开启InstantRun之后，一定要在ARouter.init之前调用openDebug
             ARouter.openDebug();
@@ -59,12 +60,12 @@ public class BaseApplication extends Application {
     }
 
 
-    public static BaseApplication getAppInstance() {
+    public static BaseApplication getInstance() {
         return appContext;
     }
 
     public static RefWatcher getRefWatcher() {
-        return getAppInstance().mRefWatcher;//获取leakCanary监测对象
+        return getInstance().mRefWatcher;//获取leakCanary监测对象
     }
 
 
