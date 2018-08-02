@@ -99,7 +99,6 @@ public class FloatHeadListView extends ListView {
             return;
         if (floatView.getVisibility() == View.VISIBLE) {
             if (isCanAnim() && isShow) {
-
                 ObjectAnimator animator = ObjectAnimator.ofFloat(floatView,
                         "translationY",
                         0f, DisplayUtil.dp2px(getContext(), -floatView.getHeight()));
