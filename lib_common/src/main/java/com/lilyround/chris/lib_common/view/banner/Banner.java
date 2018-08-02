@@ -72,6 +72,7 @@ public class Banner extends RelativeLayout implements BannerAdapter.ViewPagerOnI
         View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_banner, this, false);
         mViewPager = view.findViewById(R.id.vp_banner);
         mLlPoint = view.findViewById(R.id.ll_point);
+        this.addView(view);
     }
 
     public Banner setBannerData(List<BannerBean> bannerList) {
@@ -82,6 +83,7 @@ public class Banner extends RelativeLayout implements BannerAdapter.ViewPagerOnI
             if (mLlPoint.getChildCount() != 0) {
                 mLlPoint.removeAllViewsInLayout();
             }
+            imageSize = bannerList.size();
             List<ImageView> imageList = new ArrayList<>();
             for (int i = 0; i < bannerList.size(); i++) {
                 //初始化与图片对应个数的小圆点
@@ -109,6 +111,7 @@ public class Banner extends RelativeLayout implements BannerAdapter.ViewPagerOnI
             }
             BannerAdapter adapter = new BannerAdapter(imageList);
             mViewPager.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
             adapter.setmViewPagerOnItemClickListener(this);
         }
 

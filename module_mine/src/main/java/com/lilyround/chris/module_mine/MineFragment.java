@@ -1,15 +1,22 @@
 package com.lilyround.chris.module_mine;
 
 import android.view.View;
+import android.widget.Button;
 
 import com.lilyround.chris.lib_common.base.RxLazyFragment;
+import com.lilyround.chris.lib_common.view.CircleRippleView;
+import com.lilyround.chris.lib_common.view.circlewaveview.ComboView;
 
 
 /*
  * Created by chris on 2018/7/3 13:35
  * 我的fragment
  */
-public class MineFragment extends RxLazyFragment {
+public class MineFragment extends RxLazyFragment implements View.OnClickListener {
+
+    private CircleRippleView mCircleRippleView;
+    private ComboView mComboView;
+
     @Override
     public int getLayout() {
         return R.layout.fragment_mine;
@@ -17,15 +24,36 @@ public class MineFragment extends RxLazyFragment {
 
     @Override
     public void initViews(View view) {
-
+        Button btnStart = findId(R.id.btn_start);
+        mCircleRippleView = findId(R.id.circle_ripple_view);
+        mComboView = findId(R.id.combo_view);
+        btnStart.setOnClickListener(this);
     }
 
     @Override
     public void loadData() {
+        int[] result = new int[]{1, 2, 3, 4, 5, 2};
+        int len = 0;
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] != 2){
+                result[len] = result[i];
+                len++;
+            }
+        }
+
 
     }
 
     public static MineFragment instance() {
         return new MineFragment();
+    }
+
+    @Override
+    public void onClick(View v) {
+//        mCircleRippleView.setVisibility(View.VISIBLE);
+//        mCircleRippleView.startAnimator();
+//        mCircleRippleView.reset();
+//        mCircleRippleView.startCountdown();
+        mComboView.sendRepeat();
     }
 }

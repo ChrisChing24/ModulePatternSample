@@ -1,11 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CartFragment"/>
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_first"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/color_31A8FF"
+            android:gravity="center"
+            android:text="CartFragment" />
+
+        <TextView
+            android:id="@+id/tv_second"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/color_9024FF"
+            android:gravity="center"
+            android:text="secondText" />
+
+        <com.lilyround.chris.module_cart.FloatHeadListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<View-->
+            <!--android:id="@+id/view_empty"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="110dp"-->
+            <!--android:background="@android:color/transparent" />-->
+
+        <!---->
+    <!--</LinearLayout>-->
+
+
+    <include
+        android:id="@+id/header2"
+        layout="@layout/layout_header"
+        android:visibility="gone" />
+</FrameLayout>
