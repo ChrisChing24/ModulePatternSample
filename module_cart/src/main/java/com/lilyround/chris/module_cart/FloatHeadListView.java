@@ -171,7 +171,6 @@ public class FloatHeadListView extends ListView {
                         .start();
             }
 
-
             isShow = true;
         }
 
