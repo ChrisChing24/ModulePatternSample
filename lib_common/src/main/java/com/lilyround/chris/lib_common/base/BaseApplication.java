@@ -19,19 +19,6 @@ public class BaseApplication extends Application {
 
     public static BaseApplication appContext;
 
-//    static {
-//        //设置全局的Header构建器
-//        SmartRefreshLayout.setDefaultRefreshHeaderCreater((context, layout) -> {
-//            layout.setPrimaryColorsId(android.R.color.transparent, android.R.color.black);//全局设置主题颜色
-//            return new ClassicsHeader(context);//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
-//        });
-//        //设置全局的Footer构建器
-//        SmartRefreshLayout.setDefaultRefreshFooterCreater((context, layout) -> {
-//            //指定为经典Footer，默认是 BallPulseFooter
-//            return new ClassicsFooter(context).setDrawableSize(20);
-//        });
-//    }
-
     private RefWatcher mRefWatcher;
 
     @Override
@@ -40,7 +27,8 @@ public class BaseApplication extends Application {
 
         appContext = this;
         // 用于监测内存泄漏，一旦有则显示在log里，debug时会多安装一个"Leaks"的app
-        //在leakCanary SDK1.5以前，Android 6.0以上系统可能会报FATAL EXCEPTION: IntentService[HeapAnalyzerService]
+        //在leakCanary SDK1.5以前，Android 6.0以上系统可能会报FATAL EXCEPTION:
+        // IntentService[HeapAnalyzerService]
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
@@ -64,10 +52,13 @@ public class BaseApplication extends Application {
         return appContext;
     }
 
+    /**
+     * 获取leakCanary监测对象
+     * @return leakCanary监测对象
+     */
     public static RefWatcher getRefWatcher() {
-        return getInstance().mRefWatcher;//获取leakCanary监测对象
+        return getInstance().mRefWatcher;
     }
-
 
 
 }
