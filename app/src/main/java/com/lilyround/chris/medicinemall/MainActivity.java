@@ -48,7 +48,7 @@ public class MainActivity extends RxBaseActivity implements View.OnClickListener
         SortFragment sortFragment = SortFragment.instance();
         CartFragment cartFragment = CartFragment.instance();
         MineFragment mineFragment = MineFragment.instance();
-        //添加点击的view,促销活动跳转另外的页面，不是fragment，所以此处不需要添加
+        //添加点击的view
         mTabs = new View[]{llHome, llSort, rlCart, rlMine};
         //添加fragment
         mFragmentArray = new Fragment[]{homeFragment, sortFragment, cartFragment, mineFragment};
